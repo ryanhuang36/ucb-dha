@@ -1,0 +1,28 @@
+body {
+    text-align: center;
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+    font-size: 14px;
+    line-height: 1.4285em;
+    color: rgba(0,0,0,.87);
+}
+
+#intro {
+    background-color: lightblue;
+    font-size: 2em;
+}
+
+#multi-select-box {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+#intro-box {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+#find-button-box {
+    padding: 10px;
+}

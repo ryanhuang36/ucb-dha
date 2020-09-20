@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bored in Quarantine</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/dropdown.min.css" integrity="sha512-YYS7fyqDxVE/yJ1280i8KjA+nC7wAtv2u/qkulKbdMpmp8DBWX0Wj+HtILsFyvq+fouCwCyr0hasPAz1eBlvwA==" crossorigin="anonymous" />
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="scripts.js"></script>
+    </head>
+    <body>
+        <h1 id="title">Bored in Quarantine</h1>
+
+        <div id="intro-box">
+            <p id="intro">Bored during quarantine? Check out some fun games to play by yourself or with others!</p>
+        </div>
+
+        <div id="multi-select-box">
+            <select class="ui fluid search dropdown" multiple="multiple" id="multi-select">
+                <option value="">I'm looking to:</option>
+                <option value="hang-out">Hangout</option>
+                <option value="media">Watch movies</option>
+                <option value="cooking">Cook</option>
+                <option value="health">Stay healthy</option>
+                <option value="games">Game</option>
+            </select>
+        </div>
+        
+        <div id="find-button-box">
+            <div class="ui button" id="find-button">Let's do it!</div>
+        </div>
+
+        <div class="links-box">
+            <p id="results"></p> <br>
+            <a id="1" href=""></a>
+            <a id="2" href=""></a>
+            <a id="3" href=""></a>
+            <a id="4" href=""></a>
+            <a id="5" href=""></a>
+            <a id="6" href=""></a>
+            <a id="7" href=""></a>
+            <a id="8" href=""></a>
+        </div>
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
+
+        <script>
+        // Set the configuration for your app
+        // TODO: Replace with your project's config object
+        var config = {
+          apiKey: "AIzaSyBDrRjvihTKQ5AhwMFnbQbhC5Qz87tY-XI",
+          authDomain: "ucb-dha.firebaseapp.com",
+          databaseURL: "https://ucb-dha.firebaseio.com/",
+        };
+        firebase.initializeApp(config);
+      
+        // Get a reference to the database service
+        var database = firebase.database();
+
+
+        </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/dropdown.min.js" integrity="sha512-8F/2JIwyPohlMVdqCmXt6A6YQ9X7MK1jHlwBJv2YeZndPs021083S2Z/mu7WZ5g0iTlGDYqelA9gQXGh1F0tUw==" crossorigin="anonymous"></script>
+    </body>
+</html>
