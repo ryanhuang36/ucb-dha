@@ -12,29 +12,33 @@ $( document ).ready(function() {
   });
 
     $("#find-button").click(function() {
-      // console.log(dropDownValues);
+      var linkPromises = [];
 
-      for (val in dropDownValues) {
+      console.log(dropDownValues);
+
         var path = database.ref();
-        // console.log("path: " + path);
         path.once('value').then(function(snapshot) {
-          var length = snapshot.child("" + dropDownValues[val]).numChildren()
-          // console.log("snapshot: " + snapshot.child("" + dropDownValues[val]).numChildren());
-          var randomNum = getRandomInt(1, length);
-          var subPath = database.ref("" + dropDownValues[val] + "/" + randomNum);
-          subPath.once('value').then(function(snapshot2) {
-            links.push("" + snapshot2.val());
-            // console.log('Link: ' + snapshot2.val());
-          });
-        });
-      }
+          for (val in dropDownValues) {
+            var length = snapshot.child("" + dropDownValues[val]).numChildren();
+            console.log("length: " + length);
+            var randomNum = getRandomInt(1, length);
+            var subPath = database.ref("" + dropDownValues[val] + "/" + randomNum);
+            console.log("subPath: " + subPath);
+            linkPromises.push(subPath.once('value'));
+          }
 
-      for (i = 0; i < links.length; i++) {
-        console.log("link num: " +link);
-        document.getElementById("" + (i + 1)).title = links[i];
-        document.getElementById("" + (i + 1)).href = links[i];
-      }
-      console.log(links);
+          Promise.all(linkPromises).then(function (snapshots) {
+            console.log("snapshot: " + snapshots);
+            var links = snapshots.map(snapshot => snapshot.val());
+            $("#recommendations").empty();
+            for (let i = 0; i < links.length; i++) {
+              $("#recommendations").append("<a target='_blank' + href=" + " ' " + links[i] + " ' " + ">" + links[i] + "</a>");
+              $("#recommendations").append("<br>");
+            }
+            console.log(links);
+          });
+
+        });
 
     });
 
@@ -44,29 +48,4 @@ $( document ).ready(function() {
       max = Math.floor(max);
       return Math.floor(Math.random() * (max - min + 1)) + min;
   }
-
-
-
-      
-    //     dropdown.dropdown('get value', function(val) {
-    //       console.log(val);
-    //     });
-
-        // var path = database.ref('games/1');
-        // path.once('value').then(function(snapshot) {
-        //   console.log("snapshot: ");
-        //   console.log(snapshot);
-        // });
-
-    //   $('#find-button')
-    //   .on('click', function() {
-    // $('#multi-select')
-    //   .dropdown('get value', function(val) {
-    //     console.log(val);
-    //   })
-    //   });
-
-
-
-
 });
